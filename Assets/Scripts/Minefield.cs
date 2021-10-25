@@ -14,6 +14,7 @@ public class Minefield : MonoBehaviour
 
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs = new List<GameObject>();
+    List<int> victoryList = new List<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +111,7 @@ public class Minefield : MonoBehaviour
             if (cells[i].value != -1)
             {
                 cells[i].value = CountSurroundingMines(i);
+                victoryList.Add(cells[i].index);
             }
         }
     }
@@ -127,6 +129,89 @@ public class Minefield : MonoBehaviour
         return result;
     }
 
-   
+
+    public void LeftClick(int index)
+    {
+        Debug.Log("State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
+        Cell cell = cells[index];
+        if (cell.state == Cell.State.Lock)
+        {
+            if (cell.value == -1)
+            {
+                cell.state = Cell.State.Explode;
+                cell.UpdateSprite();
+                Explode();
+                //LOSS
+            }
+            else
+            {
+                OpenCell(cell, true);
+            }
+        }
+    }
+
+    public void RightClick(int index)
+    {
+        Debug.Log("State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
+        Cell cell = cells[index];
+        if (cell.state == Cell.State.Lock)
+        {
+            cell.state = Cell.State.Flag;
+            cell.UpdateSprite();
+        }
+        else if (cell.state == Cell.State.Flag)
+        {
+            cell.state = Cell.State.Lock;
+            cell.UpdateSprite();
+        }
+    }
+
+    void Explode()
+    {
+        foreach (Cell cell in cells)
+        {
+            if ((cell.state == Cell.State.Flag) | (cell.state == Cell.State.Lock))
+            {
+                OpenCell(cell);
+            }
+        }
+    }
+    void OpenCell(Cell cell, bool cascade = false)
+    {
+        cell.state = Cell.State.Open;
+        cell.UpdateSprite();
+        if ((cell.value == 0) & cascade)
+        {
+            Cascade(cell);
+        }
+        victoryList.Remove(cell.index);
+        if (victoryList.Count == 0)
+        {
+            Debug.Log("VICTORY");
+            //VICTORY
+        }
+    }
+    void Cascade(Cell cell)
+    {
+        List<int> zeros = new List<int>();
+        zeros.Add(cell.index);
+        while (zeros.Count > 0)
+        {
+            foreach (int i in cells[zeros[0]].surroundings)
+            {
+                if (cells[i].state != Cell.State.Open)
+                {
+                    OpenCell(cells[i]);
+                    if (cells[i].value == 0)
+                    {
+                        zeros.Add(i);
+                    }
+                }
+
+            }
+            zeros.RemoveAt(0);
+        }
+
+    }
 
 }
