@@ -15,11 +15,11 @@ D:/XAMK_STUDY/SoftDevProj/MS_Proto/MineSweeper
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-54072
+50612
 Successfully changed project path to: D:/XAMK_STUDY/SoftDevProj/MS_Proto/MineSweeper
 D:/XAMK_STUDY/SoftDevProj/MS_Proto/MineSweeper
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 158.06 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 139.22 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.24f1 (6667702a1e7c)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/Resources/UnitySubsystems
@@ -35,91 +35,91 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56572
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56416
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002655 seconds.
+Registered in 0.002587 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 141.93 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 143.63 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.593 seconds
+- Completed reload, in  1.555 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1593ms)
-		BeginReloadAssembly (84ms)
+	ReloadAssembly (1555ms)
+		BeginReloadAssembly (83ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (642ms)
-			LoadAssemblies (78ms)
+		EndReloadAssembly (619ms)
+			LoadAssemblies (80ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (224ms)
+			SetupTypeCache (204ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (319ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (316ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (142ms)
+				RefreshPlugins (144ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (128ms)
-				ProcessInitializeOnLoadMethodAttributes (40ms)
+				ProcessInitializeOnLoadAttributes (124ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006436 seconds.
+Registered in 0.006350 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\XAMK_STUDY\SoftDevProj\MS_Proto\MineSweeper\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\XAMK_STUDY\SoftDevProj\MS_Proto\MineSweeper\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 139.32 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 141.28 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.707 seconds
+- Completed reload, in  1.621 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1708ms)
-		BeginReloadAssembly (228ms)
+	ReloadAssembly (1622ms)
+		BeginReloadAssembly (202ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (1400ms)
-			LoadAssemblies (151ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (1343ms)
+			LoadAssemblies (125ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (489ms)
+			SetupTypeCache (447ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (68ms)
-			SetupLoadedEditorAssemblies (601ms)
+			RebuildScriptCaches (70ms)
+			SetupLoadedEditorAssemblies (582ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (139ms)
-				BeforeProcessingInitializeOnLoad (127ms)
-				ProcessInitializeOnLoadAttributes (300ms)
+				RefreshPlugins (141ms)
+				BeforeProcessingInitializeOnLoad (117ms)
+				ProcessInitializeOnLoadAttributes (289ms)
 				ProcessInitializeOnLoadMethodAttributes (19ms)
 				AfterProcessingInitializeOnLoad (10ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.85 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.82 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3680 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 136.4 MB.
 System memory in use after: 136.6 MB.
 
 Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 4130.
-Total: 6.413500 ms (FindLiveObjects: 0.299700 ms CreateObjectMapping: 0.206700 ms MarkObjects: 5.800700 ms  DeleteObjects: 0.105000 ms)
+Total: 4.596300 ms (FindLiveObjects: 0.304800 ms CreateObjectMapping: 0.235800 ms MarkObjects: 3.981700 ms  DeleteObjects: 0.072700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,7 +134,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Cell.cs
-  artifactKey: Guid(ed3cd79c60e4c7d47b1090622787afa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Cell.cs using Guid(ed3cd79c60e4c7d47b1090622787afa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9991ff460564468bf8b73f19cd1e8827') in 0.037604 seconds 
+  path: Assets/Sprites/Cell_mine.png
+  artifactKey: Guid(65d2f9a14ceff2547b209bf90be390fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Cell_mine.png using Guid(65d2f9a14ceff2547b209bf90be390fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea345ed33a42ae9ec28090976daa4466') in 0.129657 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
