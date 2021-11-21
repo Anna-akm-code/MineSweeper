@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Minefield : MonoBehaviour
 {
-    const int FieldWidth = 10;
-    const int FieldHeight = 10;
-    const int MinesNum = 20;
+
+    int FieldWidth = 10;
+    int FieldHeight = 10;
+    int MinesNum = 20;
 
     [SerializeField]
     GameObject prefabCell;
@@ -19,6 +21,8 @@ public class Minefield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Get difficulty based parameters");
+        GetStartParameters();
         Debug.Log("start");
         GenerateCellObjects(FieldWidth, FieldHeight);
         Debug.Log("objects generated");
@@ -33,7 +37,30 @@ public class Minefield : MonoBehaviour
 
     //}
 
-    void GenerateCellObjects(int width = FieldWidth, int height = FieldHeight)
+    void GetStartParameters()
+    {
+        int diff = PlayerPrefs.GetInt("Difficulty");
+        switch (diff)
+        {
+            case 1:
+                FieldWidth = 10;
+                FieldHeight = 10;
+                MinesNum = 10;
+                break;
+            case 2:
+                FieldWidth = 16;
+                FieldHeight = 16;
+                MinesNum = 40;
+                break;
+            case 3:
+                FieldWidth = 30;
+                FieldHeight = 16;
+                MinesNum = 99;
+                break;
+        }
+    }    
+
+    void GenerateCellObjects(int width, int height)
     {
         for (int i = 0; i < height; i++)
         {
@@ -44,7 +71,7 @@ public class Minefield : MonoBehaviour
                 cellObjs.Last().transform.position = Location;
                 cells.Add(cellObjs.Last().GetComponent<Cell>());
                 cells.Last().surroundings = GetSurroundings(j, i, width, height);
-                cells.Last().index = XYtoIndex(j, i);
+                cells.Last().index = XYtoIndex(j, i, width);
             }
         }
     }
@@ -86,12 +113,12 @@ public class Minefield : MonoBehaviour
 
     }
 
-    int XYtoIndex(int x, int y, int width = FieldWidth)
+    int XYtoIndex(int x, int y, int width)
     {
         return ((y * width) + x);
     }
 
-    void GenerateMines(int minenum = MinesNum, int width = FieldWidth, int height = FieldHeight)
+    void GenerateMines(int minenum, int width, int height)
     {
         int minectrl = 0;
         for (int i = 0; i < minenum; i++)
@@ -247,6 +274,10 @@ public class Minefield : MonoBehaviour
         Start();
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 
 }
