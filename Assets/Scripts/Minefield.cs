@@ -12,9 +12,10 @@ public class Minefield : MonoBehaviour
     int MinesNum = 20;
     int flagsNum = 0;
     int MinesLeft;
+    int difficulty;
 
-    bool Victory;
-    bool Loss;
+    bool victory;
+    bool loss;
 
     [SerializeField]
     GameObject prefabCell;
@@ -24,20 +25,22 @@ public class Minefield : MonoBehaviour
     List<int> victoryList = new List<int>();
 
     MineCounter mineCounter;
-
+    Timer timeCounter;
 
 
     void Awake()
     {
         mineCounter = GameObject.Find("MineCounter").GetComponent<MineCounter>();
+        timeCounter = GameObject.Find("Timer").GetComponent<Timer>();
     }
     // Start is called before the first frame update
     void Start()
     {
         
-        Victory = false;
-        Loss = false;
+        victory = false;
+        loss = false;
         Debug.Log("Get difficulty based parameters");
+        difficulty = PlayerPrefs.GetInt("Difficulty");
         GetStartParameters();
         Debug.Log("start");
         GenerateCellObjects(FieldWidth, FieldHeight);
@@ -47,6 +50,7 @@ public class Minefield : MonoBehaviour
         GenerateValues();
         MinesLeft = MinesNum;
         mineCounter.UpdateText(MinesLeft);
+        timeCounter.StartTimer();
 
     }
 
@@ -58,8 +62,7 @@ public class Minefield : MonoBehaviour
 
     void GetStartParameters()
     {
-        int diff = PlayerPrefs.GetInt("Difficulty");
-        switch (diff)
+        switch (difficulty)
         {
             case 1:
                 FieldWidth = 10;
@@ -217,7 +220,7 @@ public class Minefield : MonoBehaviour
                 cell.UpdateSprite();
                 Explode();
                 //LOSS
-                Loss = true;
+                loss = true;
                 Debug.Log("EXPLODE");
             }
             else
@@ -259,7 +262,7 @@ public class Minefield : MonoBehaviour
                 {
                     LeftClick(i);
                 }
-                if ((Victory) | (Loss))
+                if ((victory) | (loss))
                 {
                     break;
                 }
@@ -329,7 +332,8 @@ public class Minefield : MonoBehaviour
         if ((victoryList.Count == 0) && !loss)
         {
             Debug.Log("VICTORY");
-            Victory = true;
+            victory = true;
+            Victory();
             //VICTORY
             //CleanSlate();
             
@@ -357,6 +361,24 @@ public class Minefield : MonoBehaviour
         }
 
     }
+
+    void Victory()
+    {
+        int timeResult = timeCounter.StopTimer();
+        string hiScorePref = "HighScore" + difficulty.ToString();
+        int hiScore = PlayerPrefs.GetInt(hiScorePref);
+        if (hiScore>timeResult)
+        {
+            PlayerPrefs.SetInt(hiScorePref, timeResult);
+            Debug.Log("New record: " + timeResult.ToString());
+        }
+    }
+
+
+
+
+
+
 
     public void CleanSlate()
     {

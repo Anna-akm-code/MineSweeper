@@ -8,10 +8,39 @@ using UnityEngine.SceneManagement;
 public class DifficultySelection : MonoBehaviour
 {
     ToggleGroup toggleGroup;
+
+    List<Text> hiScores = new List<Text>();
+
+    private void Awake()
+    {
+        hiScores.Add(GameObject.Find("HiScore - easy").GetComponent<Text>());
+        hiScores.Add(GameObject.Find("HiScore - normal").GetComponent<Text>());
+        hiScores.Add(GameObject.Find("HiScore - hard").GetComponent<Text>());
+        toggleGroup = GetComponent<ToggleGroup>();
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
-        toggleGroup = GetComponent<ToggleGroup>();
+        SetHiScores();
+        
+    }
+
+
+    void SetHiScores()
+    {
+        int i = 1;
+        foreach(Text text in hiScores)
+        {
+            string pref = "HighScore" + i.ToString();
+            if (!PlayerPrefs.HasKey(pref))
+            {
+                PlayerPrefs.SetInt(pref, 9999);
+            }
+            text.text = PlayerPrefs.GetInt(pref).ToString();
+            i++;
+        }
     }
 
     public void StartGame()
