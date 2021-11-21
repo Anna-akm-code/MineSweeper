@@ -11,6 +11,9 @@ public class Minefield : MonoBehaviour
     int FieldHeight = 10;
     int MinesNum = 20;
 
+    bool Victory;
+    bool Loss;
+
     [SerializeField]
     GameObject prefabCell;
 
@@ -21,6 +24,8 @@ public class Minefield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Victory = false;
+        Loss = false;
         Debug.Log("Get difficulty based parameters");
         GetStartParameters();
         Debug.Log("start");
@@ -171,6 +176,19 @@ public class Minefield : MonoBehaviour
         return result;
     }
 
+    int CountSurroundingFlags(int index)
+    {
+        int result = 0;
+        foreach (int i in cells[index].surroundings)
+        {
+            if (cells[i].state == Cell.State.Flag)
+            {
+                result++;
+            }
+        }
+        return result;
+    }
+
 
     public void LeftClick(int index)
     {
@@ -185,6 +203,7 @@ public class Minefield : MonoBehaviour
                 cell.UpdateSprite();
                 Explode();
                 //LOSS
+                Loss = true;
                 Debug.Log("EXPLODE");
             }
             else
@@ -211,6 +230,64 @@ public class Minefield : MonoBehaviour
         }
     }
 
+    public void MiddleClick(int index)
+    {
+        Cell cell = cells[index];
+        if ((cell.state == Cell.State.Open) & (CountSurroundingFlags(index) == cell.value))
+        {
+            foreach (int i in cell.surroundings)
+            {
+                if (cells[i].state == Cell.State.Lock)
+                {
+                    LeftClick(i);
+                }
+                if ((Victory) | (Loss))
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            MiddleOff(index);
+        }
+    }
+
+    public void MiddleOff(int index)
+    {
+        foreach (Cell checkCell in cells)
+        {
+            if (checkCell.externalHighlight)
+            {
+                checkCell.externalHighlight = false;
+                checkCell.UpdateSprite();
+            }
+        }
+    }
+
+    public void MiddleHold(int index)
+    {
+        List<int> highlights = new List<int>();
+        highlights.Add(index);
+        foreach (int i in cells[index].surroundings)
+        {
+            highlights.Add(i);
+        }
+        //foreach (Cell checkCell in cells)
+        //{
+        //    if ((!highlights.Contains(checkCell.index)) & (checkCell.externalHighlight))
+        //    {
+        //        checkCell.externalHighlight = false;
+        //        checkCell.UpdateSprite();
+        //    }
+        //}
+        foreach (int i in highlights)
+        {
+            cells[i].externalHighlight = true;
+            cells[i].UpdateSprite();
+        }
+    }
+
     void Explode()
     {
         foreach (Cell cell in cells)
@@ -234,8 +311,9 @@ public class Minefield : MonoBehaviour
         if ((victoryList.Count == 0) && !loss)
         {
             Debug.Log("VICTORY");
+            Victory = true;
             //VICTORY
-            CleanSlate();
+            //CleanSlate();
             
         }
     }

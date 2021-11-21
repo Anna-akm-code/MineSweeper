@@ -14,6 +14,8 @@ public class Cell : MonoBehaviour
     [SerializeField]
     Sprite spriteExplode;
     [SerializeField]
+    Sprite spriteHigh;
+    [SerializeField]
     List<Sprite> spritesVal;
 
     //State prop
@@ -25,6 +27,9 @@ public class Cell : MonoBehaviour
         Explode
     }
     public State state = State.Lock;
+
+    bool highlight = false;
+    public bool externalHighlight = false;
 
     //GameObject's sprite renderer, assigned in Start
     SpriteRenderer sprite;
@@ -57,6 +62,15 @@ public class Cell : MonoBehaviour
     private void OnMouseOver()
     {
         {
+            if ((Input.GetMouseButton(0)) & (state == State.Lock))
+            {
+                highlight = true;
+                UpdateSprite();
+            }
+            if (Input.GetMouseButton(2))
+            {
+                minefield.MiddleHold(index);
+            }
             if (Input.GetMouseButtonUp(0))
             {
                 minefield.LeftClick(index);
@@ -67,8 +81,21 @@ public class Cell : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(2))
             {
+                minefield.MiddleClick(index);
                 //Debug.Log("Pressed middle click.");
             }
+        }
+    }
+    private void OnMouseExit()
+    {
+        if (highlight)
+        {
+            highlight = false;
+            UpdateSprite();
+        }
+        if (Input.GetMouseButton(2))
+        {
+            minefield.MiddleOff(index);
         }
     }
 
@@ -82,7 +109,14 @@ public class Cell : MonoBehaviour
         switch (state)
         {
             case State.Lock:
-                return spriteLock;
+                if (highlight | externalHighlight)
+                {
+                    return spriteHigh;
+                }
+                else
+                {
+                    return spriteLock;
+                }
             case State.Flag:
                 return spriteFlag;
             case State.Explode:
