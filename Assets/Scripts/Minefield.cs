@@ -93,15 +93,30 @@ public class Minefield : MonoBehaviour
 
     void GenerateMines(int minenum = MinesNum, int width = FieldWidth, int height = FieldHeight)
     {
+        int minectrl = 0;
         for (int i = 0; i < minenum; i++)
         {
             int place = Random.Range(0, cells.Count);
-            while (CountSurroundingMines(place) == cells[place].surroundings.Count)
+            while (!SuitableForMine(place))
             {
                 place = Random.Range(0, cells.Count);
             }
             cells[place].value = -1;
+            minectrl++;
         }
+        Debug.Log("Mines laid: " + minectrl.ToString());
+    }
+
+    bool SuitableForMine(int index)
+    {
+        if ((cells[index].value == -1)||(CountSurroundingMines(index) == cells[index].surroundings.Count))
+            return false;
+        foreach (int ind in cells[index].surroundings)
+            {
+            if (CountSurroundingMines(ind) >= (cells[ind].surroundings.Count - 1))
+                return false;
+            }
+        return true;
     }
 
     void GenerateValues()
@@ -132,7 +147,8 @@ public class Minefield : MonoBehaviour
 
     public void LeftClick(int index)
     {
-        Debug.Log("State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
+        Debug.Log("Left click");
+        Debug.Log("Id = " + cells[index].index.ToString() + "State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
         Cell cell = cells[index];
         if (cell.state == Cell.State.Lock)
         {
@@ -142,17 +158,19 @@ public class Minefield : MonoBehaviour
                 cell.UpdateSprite();
                 Explode();
                 //LOSS
+                Debug.Log("EXPLODE");
             }
             else
             {
-                OpenCell(cell, true);
+                OpenCell(cell, cascade: true);
             }
         }
     }
 
     public void RightClick(int index)
     {
-        Debug.Log("State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
+        Debug.Log("Right click");
+        Debug.Log("Id = " + cells[index].index.ToString() + "State = " + cells[index].state.ToString() + ", val = " + cells[index].value.ToString());
         Cell cell = cells[index];
         if (cell.state == Cell.State.Lock)
         {
@@ -172,23 +190,26 @@ public class Minefield : MonoBehaviour
         {
             if ((cell.state == Cell.State.Flag) | (cell.state == Cell.State.Lock))
             {
-                OpenCell(cell);
+                OpenCell(cell, loss: true);
             }
         }
     }
-    void OpenCell(Cell cell, bool cascade = false)
+    void OpenCell(Cell cell, bool cascade = false, bool loss = false)
     {
         cell.state = Cell.State.Open;
         cell.UpdateSprite();
+        victoryList.Remove(cell.index);
+        Debug.Log("Remain = " + victoryList.Count.ToString());
         if ((cell.value == 0) & cascade)
         {
             Cascade(cell);
         }
-        victoryList.Remove(cell.index);
-        if (victoryList.Count == 0)
+        if ((victoryList.Count == 0) && !loss)
         {
             Debug.Log("VICTORY");
             //VICTORY
+            CleanSlate();
+            
         }
     }
     void Cascade(Cell cell)
@@ -213,5 +234,19 @@ public class Minefield : MonoBehaviour
         }
 
     }
+
+    public void CleanSlate()
+    {
+        foreach (GameObject cellObj in cellObjs)
+        {
+            Destroy(cellObj);
+        }
+        cells = new List<Cell>();
+        cellObjs = new List<GameObject>();
+        victoryList = new List<int>();
+        Start();
+    }
+
+
 
 }
