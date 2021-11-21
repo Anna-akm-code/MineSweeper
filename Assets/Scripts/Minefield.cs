@@ -10,6 +10,8 @@ public class Minefield : MonoBehaviour
     int FieldWidth = 10;
     int FieldHeight = 10;
     int MinesNum = 20;
+    int flagsNum = 0;
+    int MinesLeft;
 
     bool Victory;
     bool Loss;
@@ -21,9 +23,18 @@ public class Minefield : MonoBehaviour
     List<GameObject> cellObjs = new List<GameObject>();
     List<int> victoryList = new List<int>();
 
+    MineCounter mineCounter;
+
+
+
+    void Awake()
+    {
+        mineCounter = GameObject.Find("MineCounter").GetComponent<MineCounter>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        
         Victory = false;
         Loss = false;
         Debug.Log("Get difficulty based parameters");
@@ -34,12 +45,15 @@ public class Minefield : MonoBehaviour
         GenerateMines(MinesNum, FieldWidth, FieldHeight);
         Debug.Log("mines generated");
         GenerateValues();
+        MinesLeft = MinesNum;
+        mineCounter.UpdateText(MinesLeft);
+
     }
 
     // Update is called once per frame
     //void Update()
     //{
-
+        
     //}
 
     void GetStartParameters()
@@ -222,11 +236,15 @@ public class Minefield : MonoBehaviour
         {
             cell.state = Cell.State.Flag;
             cell.UpdateSprite();
+            MinesLeft--;
+            mineCounter.UpdateText(MinesLeft);
         }
         else if (cell.state == Cell.State.Flag)
         {
             cell.state = Cell.State.Lock;
             cell.UpdateSprite();
+            MinesLeft++;
+            mineCounter.UpdateText(MinesLeft);
         }
     }
 
@@ -350,6 +368,7 @@ public class Minefield : MonoBehaviour
         cellObjs = new List<GameObject>();
         victoryList = new List<int>();
         Start();
+        //SceneManager.LoadScene("MinesweeperGame");
     }
 
     public void MainMenu()

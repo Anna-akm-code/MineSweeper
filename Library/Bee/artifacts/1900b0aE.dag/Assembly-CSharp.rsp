@@ -342,6 +342,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/Cell.cs"
 "Assets/Scripts/DifficultySelection.cs"
+"Assets/Scripts/MineCounter.cs"
 "Assets/Scripts/Minefield.cs"
 -langversion:8.0
 
