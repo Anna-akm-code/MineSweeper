@@ -344,6 +344,7 @@
 "Assets/Scripts/DifficultySelection.cs"
 "Assets/Scripts/MineCounter.cs"
 "Assets/Scripts/Minefield.cs"
+"Assets/Scripts/ScreenSizeSet.cs"
 "Assets/Scripts/Timer.cs"
 -langversion:8.0
 

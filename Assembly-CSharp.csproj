@@ -55,9 +55,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Minefield.cs" />
     <Compile Include="Assets\Scripts\Cell.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\MineCounter.cs" />
     <Compile Include="Assets\Scripts\DifficultySelection.cs" />
-    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\ScreenSizeSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

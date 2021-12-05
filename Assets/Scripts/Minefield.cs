@@ -75,8 +75,8 @@ public class Minefield : MonoBehaviour
                 MinesNum = 40;
                 break;
             case 3:
-                FieldWidth = 30;
-                FieldHeight = 16;
+                FieldWidth = 24;
+                FieldHeight = 20;
                 MinesNum = 99;
                 break;
         }
