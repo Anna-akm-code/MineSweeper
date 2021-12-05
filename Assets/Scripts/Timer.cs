@@ -31,7 +31,7 @@ public class Timer : MonoBehaviour
             {
                 seconds = (int)currentTime;
             }
-            text.text = "Time: " + seconds.ToString();
+            text.text = seconds.ToString();
         }
     }
 

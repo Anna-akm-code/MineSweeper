@@ -10,6 +10,8 @@ public class Minefield : MonoBehaviour
     int FieldWidth = 10;
     int FieldHeight = 10;
     int MinesNum = 20;
+    float xOffset = 5;
+    float yOffset = 5;
     int flagsNum = 0;
     int MinesLeft;
     int difficulty;
@@ -68,16 +70,22 @@ public class Minefield : MonoBehaviour
                 FieldWidth = 10;
                 FieldHeight = 10;
                 MinesNum = 10;
+                xOffset = -2.25f;
+                yOffset = 4.5f;
                 break;
             case 2:
                 FieldWidth = 16;
                 FieldHeight = 16;
                 MinesNum = 40;
+                xOffset = 0.75f;
+                yOffset = 7.5f;
                 break;
             case 3:
                 FieldWidth = 24;
                 FieldHeight = 20;
                 MinesNum = 99;
+                xOffset = 4.75f;
+                yOffset = 9.5f;
                 break;
         }
     }    
@@ -88,7 +96,7 @@ public class Minefield : MonoBehaviour
         {
             for (int j = 0; j < width; j++)
             {
-                Vector3 Location = new Vector3(j - 5, i - 5, -Camera.main.transform.position.z);
+                Vector3 Location = new Vector3(j - xOffset, i - yOffset, -Camera.main.transform.position.z);
                 cellObjs.Add(Instantiate(prefabCell) as GameObject);
                 cellObjs.Last().transform.position = Location;
                 cells.Add(cellObjs.Last().GetComponent<Cell>());
