@@ -334,7 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1241c5ac13ec06479d4ba0907dc39b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victory: 0
+  loss: 0
   prefabCell: {fileID: 8401220917979825186, guid: e7a8c04133e855f4c86ef5dae53f5ea0, type: 3}
+  prefabFirework: {fileID: 9190682262291371616, guid: 23a108f2c6ca6e04eaed85c4c78b3df3, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -448,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -208, y: -180}
+  m_AnchoredPosition: {x: -208, y: -168}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660550991

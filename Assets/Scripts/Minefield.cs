@@ -16,11 +16,15 @@ public class Minefield : MonoBehaviour
     int MinesLeft;
     int difficulty;
 
-    bool victory;
-    bool loss;
+    public bool victory;
+    public bool loss;
 
     [SerializeField]
     GameObject prefabCell;
+    [SerializeField]
+    GameObject prefabFirework;
+
+    GameObject Fireworks;
 
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs = new List<GameObject>();
@@ -326,6 +330,9 @@ public class Minefield : MonoBehaviour
                 OpenCell(cell, loss: true);
             }
         }
+        timeCounter.StopTimer();
+        mineCounter.UpdateText("TOO BAD");
+        mineCounter.BlinkOn();
     }
     void OpenCell(Cell cell, bool cascade = false, bool loss = false)
     {
@@ -379,7 +386,17 @@ public class Minefield : MonoBehaviour
         {
             PlayerPrefs.SetInt(hiScorePref, timeResult);
             Debug.Log("New record: " + timeResult.ToString());
+            mineCounter.UpdateText("RECORD!");
         }
+        else
+        {
+            mineCounter.UpdateText("VICTORY");
+        }
+        mineCounter.BlinkOn();
+        Fireworks = Instantiate(prefabFirework) as GameObject;
+        Fireworks.transform.position = new Vector3 (6.75f, 0, 0);
+
+
     }
 
 
@@ -397,6 +414,11 @@ public class Minefield : MonoBehaviour
         cells = new List<Cell>();
         cellObjs = new List<GameObject>();
         victoryList = new List<int>();
+        mineCounter.BlinkOff();
+        if (Fireworks)
+        {
+            Destroy(Fireworks);
+        }
         Start();
         //SceneManager.LoadScene("MinesweeperGame");
     }

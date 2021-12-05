@@ -61,30 +61,31 @@ public class Cell : MonoBehaviour
 
     private void OnMouseOver()
     {
-        {
-            if ((Input.GetMouseButton(0)) & (state == State.Lock))
+        if (!(minefield.victory|minefield.loss))
             {
-                highlight = true;
-                UpdateSprite();
+                if ((Input.GetMouseButton(0)) & (state == State.Lock))
+                {
+                    highlight = true;
+                    UpdateSprite();
+                }
+                if (Input.GetMouseButton(2))
+                {
+                    minefield.MiddleHold(index);
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    minefield.LeftClick(index);
+                }
+                if (Input.GetMouseButtonUp(1))
+                {
+                    minefield.RightClick(index);
+                }
+                if (Input.GetMouseButtonUp(2))
+                {
+                    minefield.MiddleClick(index);
+                    //Debug.Log("Pressed middle click.");
+                }
             }
-            if (Input.GetMouseButton(2))
-            {
-                minefield.MiddleHold(index);
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                minefield.LeftClick(index);
-            }
-            if (Input.GetMouseButtonUp(1))
-            {
-                minefield.RightClick(index);
-            }
-            if (Input.GetMouseButtonUp(2))
-            {
-                minefield.MiddleClick(index);
-                //Debug.Log("Pressed middle click.");
-            }
-        }
     }
     private void OnMouseExit()
     {
