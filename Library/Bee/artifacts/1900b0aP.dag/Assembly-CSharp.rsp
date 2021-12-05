@@ -300,6 +300,7 @@
 "Assets/Scripts/Minefield.cs"
 "Assets/Scripts/ScreenSizeSet.cs"
 "Assets/Scripts/SoundEngine.cs"
+"Assets/Scripts/SoundOnOff.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"

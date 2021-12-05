@@ -11,7 +11,7 @@ public class ScreenSizeSet : MonoBehaviour
     public Texture2D shovel_x1;
     public Texture2D shovel_x2;
 
-
+    bool ready = false;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class ScreenSizeSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ready = true;
         SetScreenSize();
     }
 
@@ -49,23 +49,27 @@ public class ScreenSizeSet : MonoBehaviour
 
     public void ApplySize()
     {
-        Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
-        int a;
-        switch (toggle.name)
+        if (ready)
         {
-            case "Toggle -x1":
-                a = 1;
-                break;
-            case "Toggle -x2":
-                a = 2;
-                break;
-            default:
-                a = 1;
-                break;
+            Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
+            int a;
+            switch (toggle.name)
+            {
+                case "Toggle -x1":
+                    a = 1;
+                    break;
+                case "Toggle -x2":
+                    a = 2;
+                    break;
+                default:
+                    a = 1;
+                    break;
             }
-        PlayerPrefs.SetInt("ScreenSize", a);
-        SetScreenSize();
+            PlayerPrefs.SetInt("ScreenSize", a);
+            SetScreenSize();
         }
+        
+    }
 
     void SetScreenSize()
     {

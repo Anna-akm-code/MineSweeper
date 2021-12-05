@@ -337,8 +337,8 @@ public class Minefield : MonoBehaviour
         mineCounter.UpdateText("TOO BAD");
         mineCounter.BlinkOn();
         //transform.localPosition = new Vector3(5, 5, -10);
-        PlaySound("explosion");
         PlaySound("loss_jingle");
+        PlaySound("explosion");
         CamShake.instance.Shake();
     }
     void OpenCell(Cell cell, bool cascade = false, bool loss = false)
