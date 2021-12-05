@@ -13,20 +13,37 @@ public class DifficultySelection : MonoBehaviour
 
     private void Awake()
     {
+        InitialDifficulty();
         hiScores.Add(GameObject.Find("HiScore - easy").GetComponent<Text>());
         hiScores.Add(GameObject.Find("HiScore - normal").GetComponent<Text>());
         hiScores.Add(GameObject.Find("HiScore - hard").GetComponent<Text>());
         toggleGroup = GetComponent<ToggleGroup>();
+        CheckToggle(PlayerPrefs.GetInt("Difficulty"));
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        CheckToggle(PlayerPrefs.GetInt("Difficulty"));
         SetHiScores();
         
     }
 
+    void InitialDifficulty()
+    {
+        if (!PlayerPrefs.HasKey("Difficulty"))
+        {
+            PlayerPrefs.SetInt("Difficulty", 1);
+        }
+    }
+
+    void CheckToggle(int diffSetting)
+    {
+        toggleGroup.SetAllTogglesOff();
+        string togg = "Toggle - diff" + diffSetting.ToString();
+        GameObject.Find(togg).GetComponent<Toggle>().isOn = true;
+    }
 
     void SetHiScores()
     {
@@ -50,13 +67,13 @@ public class DifficultySelection : MonoBehaviour
         int a;
         switch (toggle.name)
         {
-            case "Toggle - easy":
+            case "Toggle - diff1":
                 a = 1;
                 break;
-            case "Toggle - normal":
+            case "Toggle - diff2":
                 a = 2;
                 break;
-            case "Toggle - hard":
+            case "Toggle - diff3":
                 a = 3;
                 break;
             default:

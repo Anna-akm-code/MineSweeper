@@ -15,12 +15,14 @@ public class ScreenSizeSet : MonoBehaviour
 
     private void Awake()
     {
-        toggleGroup = GetComponent<ToggleGroup>();
         InitialScreenSize();
+        toggleGroup = GetComponent<ToggleGroup>();
+        CheckToggle(PlayerPrefs.GetInt("ScreenSize"));
     }
     // Start is called before the first frame update
     void Start()
     {
+        
         SetScreenSize();
     }
 
@@ -36,6 +38,13 @@ public class ScreenSizeSet : MonoBehaviour
         {
             PlayerPrefs.SetInt("ScreenSize", 1);
         }
+    }
+
+    void CheckToggle(int sizeSetting)
+    {
+        toggleGroup.SetAllTogglesOff();
+        string togg = "Toggle -x" + sizeSetting.ToString();
+        GameObject.Find(togg).GetComponent<Toggle>().isOn = true;
     }
 
     public void ApplySize()

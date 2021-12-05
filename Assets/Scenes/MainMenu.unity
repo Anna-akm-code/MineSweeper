@@ -1792,7 +1792,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &999894672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +1958,7 @@ GameObject:
   - component: {fileID: 1028960146}
   - component: {fileID: 1028960147}
   m_Layer: 5
-  m_Name: Toggle - easy
+  m_Name: Toggle - diff1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2488,7 +2488,7 @@ GameObject:
   - component: {fileID: 1336485730}
   - component: {fileID: 1336485731}
   m_Layer: 5
-  m_Name: Toggle - hard
+  m_Name: Toggle - diff3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,7 +2912,7 @@ GameObject:
   - component: {fileID: 1586872864}
   - component: {fileID: 1586872865}
   m_Layer: 5
-  m_Name: Toggle - normal
+  m_Name: Toggle - diff2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
