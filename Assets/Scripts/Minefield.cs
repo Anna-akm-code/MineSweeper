@@ -12,7 +12,7 @@ public class Minefield : MonoBehaviour
     int MinesNum = 20;
     float xOffset = 5;
     float yOffset = 5;
-    int flagsNum = 0;
+    //int flagsNum = 0;
     int MinesLeft;
     int difficulty;
 
@@ -337,6 +337,8 @@ public class Minefield : MonoBehaviour
         mineCounter.UpdateText("TOO BAD");
         mineCounter.BlinkOn();
         //transform.localPosition = new Vector3(5, 5, -10);
+        PlaySound("explosion");
+        PlaySound("loss_jingle");
         CamShake.instance.Shake();
     }
     void OpenCell(Cell cell, bool cascade = false, bool loss = false)
@@ -392,10 +394,12 @@ public class Minefield : MonoBehaviour
             PlayerPrefs.SetInt(hiScorePref, timeResult);
             Debug.Log("New record: " + timeResult.ToString());
             mineCounter.UpdateText("RECORD!");
+            PlaySound("record_jingle");
         }
         else
         {
             mineCounter.UpdateText("VICTORY");
+            PlaySound("victory_jingle");
         }
         mineCounter.BlinkOn();
         Fireworks = Instantiate(prefabFirework) as GameObject;
@@ -404,6 +408,15 @@ public class Minefield : MonoBehaviour
 
     }
 
+    void PlaySound(string soundname)
+    {
+        SoundEngine.instance.Play(soundname);
+    }
+
+    void RestartBGM()
+    {
+        SoundEngine.instance.RestartBGM();
+    }
 
     public void CleanSlate()
     {
@@ -419,6 +432,7 @@ public class Minefield : MonoBehaviour
         {
             Destroy(Fireworks);
         }
+        RestartBGM();
         Start();
         //SceneManager.LoadScene("MinesweeperGame");
     }
