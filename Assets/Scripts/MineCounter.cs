@@ -14,6 +14,6 @@ public class MineCounter : MonoBehaviour
 
     public void UpdateText(int num)
     {
-        text.text = "Mines left: "+num.ToString();
+        text.text = "Mines: "+num.ToString();
     }
 }

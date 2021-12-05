@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 77a62f36c7bdaa64d9ef30cbe6faa192, type: 3}
+  m_Sprite: {fileID: 389385617651085364, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -123,21 +123,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3cd79c60e4c7d47b1090622787afa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteLock: {fileID: 21300000, guid: 77a62f36c7bdaa64d9ef30cbe6faa192, type: 3}
-  spriteMine: {fileID: 21300000, guid: 65d2f9a14ceff2547b209bf90be390fe, type: 3}
-  spriteFlag: {fileID: 21300000, guid: da727ca0b8039ab4ba6d8d679e8f0195, type: 3}
-  spriteExplode: {fileID: 21300000, guid: 2dfe36c8c4a8f7d41932dae0bcfecaa5, type: 3}
+  spriteLock: {fileID: 389385617651085364, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  spriteMine: {fileID: -8889210890550754443, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  spriteFlag: {fileID: -9101078606699732161, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  spriteExplode: {fileID: 355578049082053873, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  spriteHigh: {fileID: 6080474485567137367, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
   spritesVal:
-  - {fileID: 21300000, guid: 46865606ac36c9840b267957007bf5e8, type: 3}
-  - {fileID: 21300000, guid: 70e1ee6386f2efb42a5da99957b79744, type: 3}
-  - {fileID: 21300000, guid: 6e947b56725520243a4a903d73e08c64, type: 3}
-  - {fileID: 21300000, guid: 2ce55f9c8cc72354ea94cc2685feda45, type: 3}
-  - {fileID: 21300000, guid: 0c8bcbab699408544a13244ae93edc0e, type: 3}
-  - {fileID: 21300000, guid: 6c6f78d0e940cfe4cb7298fd712de004, type: 3}
-  - {fileID: 21300000, guid: d137cf5bf0421fb4ea40a419275c2146, type: 3}
-  - {fileID: 21300000, guid: 685755f9c3ea9c34491fa82da89e2dc3, type: 3}
-  - {fileID: 21300000, guid: f52a84e66f7cb4a4d8e76970eff36673, type: 3}
+  - {fileID: -7399298601570442964, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: 223564376523473444, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: -2423278724247811625, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: 8784885308256822669, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: -6333853401065091352, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: -4918196436117321018, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: 7917957349324551868, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: -6066910900564926508, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
+  - {fileID: -8212767829331756122, guid: 6cf205a6b5ce94f43bf795d3fe58e243, type: 3}
   state: 0
+  externalHighlight: 0
   minefield: {fileID: 0}
   index: 0
   value: 0

@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class ScreenSizeSet : MonoBehaviour
 {
     ToggleGroup toggleGroup;
+
+    public Texture2D shovel_x1;
+    public Texture2D shovel_x2;
+
+
+
     private void Awake()
     {
         toggleGroup = GetComponent<ToggleGroup>();
@@ -58,11 +64,13 @@ public class ScreenSizeSet : MonoBehaviour
         {   
             case 2:
                 Screen.SetResolution(1280, 720, false);
-                FindObjectOfType<Camera>().GetComponent<Camera>().orthographicSize = 22.5f;
+                //FindObjectOfType<Camera>().GetComponent<Camera>().orthographicSize = 22.5f;
+                Cursor.SetCursor(shovel_x2, Vector2.zero, CursorMode.Auto);
                 break;
             default:
                 Screen.SetResolution(640, 360, false);
-                FindObjectOfType<Camera>().GetComponent<Camera>().orthographicSize = 11.25f;
+                //FindObjectOfType<Camera>().GetComponent<Camera>().orthographicSize = 11.25f;
+                Cursor.SetCursor(shovel_x1, Vector2.zero, CursorMode.Auto);
                 break;
 
         }
