@@ -32,12 +32,15 @@ public class Minefield : MonoBehaviour
 
     MineCounter mineCounter;
     Timer timeCounter;
+    //CamShake camShake;
 
 
     void Awake()
     {
         mineCounter = GameObject.Find("MineCounter").GetComponent<MineCounter>();
         timeCounter = GameObject.Find("Timer").GetComponent<Timer>();
+        //camShake = GameObject.Find("Main Camera").GetComponent<CamShake>();
+
     }
     // Start is called before the first frame update
     void Start()
@@ -333,6 +336,8 @@ public class Minefield : MonoBehaviour
         timeCounter.StopTimer();
         mineCounter.UpdateText("TOO BAD");
         mineCounter.BlinkOn();
+        //transform.localPosition = new Vector3(5, 5, -10);
+        CamShake.instance.Shake();
     }
     void OpenCell(Cell cell, bool cascade = false, bool loss = false)
     {
@@ -398,11 +403,6 @@ public class Minefield : MonoBehaviour
 
 
     }
-
-
-
-
-
 
 
     public void CleanSlate()
